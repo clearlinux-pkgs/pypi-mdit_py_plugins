@@ -4,7 +4,7 @@
 #
 Name     : pypi-mdit_py_plugins
 Version  : 0.3.0
-Release  : 1
+Release  : 2
 URL      : https://files.pythonhosted.org/packages/32/40/771fd4c00757d5fc2340ec1095fa029c47eace40ecb88e11f4763d2d1171/mdit-py-plugins-0.3.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/32/40/771fd4c00757d5fc2340ec1095fa029c47eace40ecb88e11f4763d2d1171/mdit-py-plugins-0.3.0.tar.gz
 Summary  : Collection of plugins for markdown-it-py
@@ -63,7 +63,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1638610466
+export SOURCE_DATE_EPOCH=1638610673
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -73,6 +73,8 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 export MAKEFLAGS=%{?_smp_mflags}
+pypi-dep-fix.py . docutils
+pypi-dep-fix.py . markdown-it-py
 python3 -m build --wheel --skip-dependency-check --no-isolation
 
 %install
@@ -86,6 +88,8 @@ cp %{_builddir}/mdit-py-plugins-0.3.0/mdit_py_plugins/footnote/LICENSE %{buildro
 cp %{_builddir}/mdit-py-plugins-0.3.0/mdit_py_plugins/front_matter/LICENSE %{buildroot}/usr/share/package-licenses/pypi-mdit_py_plugins/752f88468d4c37d8f9d97b8e4031d92bdfe8e501
 cp %{_builddir}/mdit-py-plugins-0.3.0/mdit_py_plugins/texmath/LICENSE %{buildroot}/usr/share/package-licenses/pypi-mdit_py_plugins/78a8778ee015c0603f4f0a9cd2cfe8c95ce791b0
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
+pypi-dep-fix.py %{buildroot} docutils
+pypi-dep-fix.py %{buildroot} markdown-it-py
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
