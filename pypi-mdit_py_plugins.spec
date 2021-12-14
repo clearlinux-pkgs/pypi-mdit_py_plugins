@@ -4,7 +4,7 @@
 #
 Name     : pypi-mdit_py_plugins
 Version  : 0.3.0
-Release  : 2
+Release  : 3
 URL      : https://files.pythonhosted.org/packages/32/40/771fd4c00757d5fc2340ec1095fa029c47eace40ecb88e11f4763d2d1171/mdit-py-plugins-0.3.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/32/40/771fd4c00757d5fc2340ec1095fa029c47eace40ecb88e11f4763d2d1171/mdit-py-plugins-0.3.0.tar.gz
 Summary  : Collection of plugins for markdown-it-py
