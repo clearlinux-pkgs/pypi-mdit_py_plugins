@@ -4,7 +4,7 @@
 #
 Name     : pypi-mdit_py_plugins
 Version  : 0.3.3
-Release  : 14
+Release  : 15
 URL      : https://files.pythonhosted.org/packages/d4/2f/58f06f27e97c9aba61220aee827e0eeef9a89116c76ca7ea1d373c187b8e/mdit-py-plugins-0.3.3.tar.gz
 Source0  : https://files.pythonhosted.org/packages/d4/2f/58f06f27e97c9aba61220aee827e0eeef9a89116c76ca7ea1d373c187b8e/mdit-py-plugins-0.3.3.tar.gz
 Summary  : Collection of plugins for markdown-it-py
@@ -20,6 +20,9 @@ BuildRequires : pypi-pluggy
 BuildRequires : pypi-pytest
 BuildRequires : pypi-tox
 BuildRequires : pypi-virtualenv
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 # mdit-py-plugins
@@ -69,15 +72,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1670497796
+export SOURCE_DATE_EPOCH=1672289335
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 export MAKEFLAGS=%{?_smp_mflags}
 pypi-dep-fix.py . docutils
 pypi-dep-fix.py . markdown-it-py
@@ -99,6 +102,7 @@ export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-mdit_py_plugins
 cp %{_builddir}/mdit-py-plugins-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-mdit_py_plugins/ab5a711cce75e49bdbd08bbcb728262e30580e5d || :
+cp %{_builddir}/mdit-py-plugins-%{version}/mdit_py_plugins/admon/LICENSE %{buildroot}/usr/share/package-licenses/pypi-mdit_py_plugins/75f4e3a4d938dcaa4d94194e2fc033e4b6dac7b0 || :
 cp %{_builddir}/mdit-py-plugins-%{version}/mdit_py_plugins/container/LICENSE %{buildroot}/usr/share/package-licenses/pypi-mdit_py_plugins/69fcf444c57897f60cc8189191798d32ace634f8 || :
 cp %{_builddir}/mdit-py-plugins-%{version}/mdit_py_plugins/deflist/LICENSE %{buildroot}/usr/share/package-licenses/pypi-mdit_py_plugins/26e00dbad9e333aeec5c446047d7b5489e2d3c6b || :
 cp %{_builddir}/mdit-py-plugins-%{version}/mdit_py_plugins/footnote/LICENSE %{buildroot}/usr/share/package-licenses/pypi-mdit_py_plugins/26e00dbad9e333aeec5c446047d7b5489e2d3c6b || :
@@ -128,6 +132,7 @@ popd
 /usr/share/package-licenses/pypi-mdit_py_plugins/26e00dbad9e333aeec5c446047d7b5489e2d3c6b
 /usr/share/package-licenses/pypi-mdit_py_plugins/69fcf444c57897f60cc8189191798d32ace634f8
 /usr/share/package-licenses/pypi-mdit_py_plugins/752f88468d4c37d8f9d97b8e4031d92bdfe8e501
+/usr/share/package-licenses/pypi-mdit_py_plugins/75f4e3a4d938dcaa4d94194e2fc033e4b6dac7b0
 /usr/share/package-licenses/pypi-mdit_py_plugins/78a8778ee015c0603f4f0a9cd2cfe8c95ce791b0
 /usr/share/package-licenses/pypi-mdit_py_plugins/ab5a711cce75e49bdbd08bbcb728262e30580e5d
 
