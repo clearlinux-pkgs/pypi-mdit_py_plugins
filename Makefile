@@ -1,5 +1,5 @@
 PKG_NAME := pypi-mdit_py_plugins
-URL = https://files.pythonhosted.org/packages/b4/db/61960d68d5c39ff0dd48cb799a39ae4e297f6e9b96bf2f8da29d897fba0c/mdit_py_plugins-0.4.0.tar.gz
+URL = https://files.pythonhosted.org/packages/00/6c/79c52651b22b64dba5c7bbabd7a294cc410bfb2353250dc8ade44d7d8ad8/mdit_py_plugins-0.4.1.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
